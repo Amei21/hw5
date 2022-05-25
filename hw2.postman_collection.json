@@ -1,0 +1,189 @@
+{
+	"info": {
+		"_postman_id": "31eceb9f-cab0-4108-b720-bb015fecf298",
+		"name": "hw2",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "first",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://162.55.220.72:5005/first",
+					"protocol": "http",
+					"host": [
+						"162",
+						"55",
+						"220",
+						"72"
+					],
+					"port": "5005",
+					"path": [
+						"first"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "login",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "login",
+							"value": "Elsa",
+							"type": "text"
+						},
+						{
+							"key": "password",
+							"value": "21frfrf",
+							"type": "text"
+						},
+						{
+							"key": "salary",
+							"value": "1500",
+							"type": "text",
+							"disabled": true
+						}
+					]
+				},
+				"url": {
+					"raw": "http://162.55.220.72:5005/login",
+					"protocol": "http",
+					"host": [
+						"162",
+						"55",
+						"220",
+						"72"
+					],
+					"port": "5005",
+					"path": [
+						"login"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "user_info",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {",
+							"    pm.response.to.have.status(200);",
+							"});",
+							"",
+							"let jsonData = pm.response.json();",
+							"let name_check = jsonData.name;",
+							"let age_check = jsonData.age;",
+							"let salary_check = jsonData.salary;",
+							"",
+							"pm.test(\"name_check\", function () {",
+							"    pm.expect(jsonData.name).to.eql(name_check);",
+							"});",
+							"",
+							"pm.test(\"age_check\", function () {",
+							"    pm.expect(jsonData.age).to.eql(age_check);",
+							"});",
+							"",
+							"pm.test(\"salary_check\", function () {",
+							"    pm.expect(jsonData.salary).to.eql(salary_check);",
+							"});",
+							"",
+							"console.log(jsonData)",
+							"console.log(name_check)",
+							"console.log(age_check)",
+							"console.log(salary_check)",
+							"",
+							"let req = request.data",
+							"let req_name = req.name",
+							"let req_age = req.age",
+							"let req_salary = req.salary",
+							"",
+							"console.log(\"req_name = \", req_name)",
+							"console.log(\"req_age = \", req_age)",
+							"console.log(\"req_salary = \", req_salary)",
+							"",
+							"let family = jsonData.family",
+							"console.log(family)",
+							"",
+							"let salary_check_1_5 = jsonData.salary * 4",
+							"let salary_1_5 = jsonData.family.u_salary_1_5_year",
+							"console.log(salary_check_1_5)",
+							"console.log(salary_1_5)",
+							"",
+							"pm.test(\"salary_check_1_5\", function () {",
+							"    pm.expect(salary_1_5).to.eql(salary_check_1_5);",
+							"});",
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "age",
+							"value": "21",
+							"type": "text"
+						},
+						{
+							"key": "salary",
+							"value": "1500",
+							"type": "text"
+						},
+						{
+							"key": "name",
+							"value": "Elsa",
+							"type": "text"
+						},
+						{
+							"key": "auth_token",
+							"value": "/s34lfgbj/Elsa/jjd909/98409kjkWpqc207021frfrf363480evny",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "http://162.55.220.72:5005/user_info_3",
+					"protocol": "http",
+					"host": [
+						"162",
+						"55",
+						"220",
+						"72"
+					],
+					"port": "5005",
+					"path": [
+						"user_info_3"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
